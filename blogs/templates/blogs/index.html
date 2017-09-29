@@ -11,46 +11,7 @@
 {% endblock menu %}
 
 {% block main %}
-    <main class="col-md-8 main-content">
-    	{% for post in posts %}
-	        <article id={{ post.id }} class="post tag-release tag-about-ghost">
-
-	            <div class="post-head">
-	                <h1 class="post-title"><a href="{% url 'blogs:post' post.id %}">{{ post.title }}</a></h1>
-	                <div class="post-meta">
-	                    <span class="author">作者：<a href="/author/wangsai/">{{ post.owner.get_full_name }}</a></span> &bull;
-	                    <time class="post-date" datetime="{{ post.date_added|date:'Y年m月d日 H:i' }}" title="{{ post.date_added|date:'Y年m月d日 H:i' }}">{{ post.date_added|date:'Y年m月d日 H:i' }}</time>
-	                </div>
-	            </div>
-	            <div class="featured-media">
-	                <a href="{% url 'blogs:post' post.id %}"><img src="{{ post.cover }}" alt="{{ post.title }}"></a>
-	            </div>
-	            <div class="post-content">
-	                <p>{{ post.summary }}</p>
-	            </div>
-	            <div class="post-permalink">
-	                <a href="{% url 'blogs:post' post.id %}" class="btn btn-default">阅读全文</a>
-	            </div>
-
-	            <footer class="post-footer clearfix">
-	                <div class="pull-left tag-list">
-	                    <i class="fa fa-folder-open-o"></i>
-	             
-
-	                    <a href="/tag/release/">{{ post.keywords }}</a>, <a href="/tag/about-ghost/">Ghost</a>
-	                </div>
-	                <div class="pull-right share">
-	                </div>
-	            </footer>
-	        </article>
-		{% empty %}
-			你还没有发布过文章
-		{% endfor %}
-
-        <nav class="pagination" role="navigation">
-            <span class="page-number">第 1 页 &frasl; 共 9 页</span>
-                <a class="older-posts" href="/page/2/"><i class="fa fa-angle-right"></i></a>
-        </nav>
-    </main>
-
+	<main class="col-md-8 main-content">
+		{% include "blogs/post_list.html" %}
+	</main>
 {% endblock main %}

@@ -55,7 +55,7 @@
 		    
 		    <div class="details">
 		        <div class="author">
-		            关于作者 <a href="/author/wangsai/">{{ post.author }}</a>
+		            关于作者 <a href="{% url 'blogs:user_index' post.owner.username %}">{{ post.owner.get_full_name }}</a>
 		        </div>
 		        <div class="meta-info">
 		            <span class="loaction"><i class="fa fa-home"></i>北京</span>
