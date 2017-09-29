@@ -28,7 +28,6 @@ class Post(models.Model):
     tags = models.CharField(max_length=100)
     # tags = models.ManyToManyField(Tag, verbose_name="标签")
     text = models.TextField()
-    author = models.CharField(max_length=20)
     date_added = models.DateTimeField(auto_now_add=True)
     owner = models.ForeignKey(User)
     #封面图，后面改为上传图片

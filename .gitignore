@@ -99,3 +99,8 @@ ENV/
 
 # mypy
 .mypy_cache/
+
+blog_env/
+__pycache__/
+*.sqlite3
+
