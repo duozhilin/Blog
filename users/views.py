@@ -7,10 +7,13 @@ from django.contrib.auth.views import login
 
 def login_view(request):
     """用户登录"""
+    context = {}
     if request.method == 'POST':
         login(request)
+        if not request.user.is_authenticated():
+            context['error'] = 'error'
 
-    return render(request, 'blogs/index.html')
+    return render(request, 'blogs/index.html', context)
 
 
 def logout_view(request):

@@ -96,8 +96,8 @@
                     {% else %}
                         <div class="widget">
                             <div class="content community">
-                                {% if form.errors %}
-                                    <p>用户名或密码错误</p>
+                                {% if error %}
+                                    <div class="alert alert-danger" role="alert"><p>用户名或密码错误</p></div>
                                 {% endif %}
                                 <form class="form-horizontal" method="post" action="{% url 'users:login_view' %}">
                                   {% csrf_token %}
