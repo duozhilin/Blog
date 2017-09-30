@@ -74,6 +74,7 @@
 <!-- start site's main content area -->
     <section class="content-wrap">
         <div class="container">
+            {% block container %}
             <div class="row">
 
                 {% block main %}
@@ -113,8 +114,11 @@
                                     </div>
                                   </div>
                                   <div class="form-group">
-                                    <div class="col-sm-offset-3 col-sm-9">
+                                    <div class="col-sm-offset-3 col-sm-4">
                                       <button type="submit" class="btn btn-default">登录</button>
+                                    </div>
+                                    <div class="col-sm-5">
+                                      <a href="{% url 'users:register' %}" class="btn btn-default">注册</a>
                                     </div>
                                   </div>
                                 </form>
@@ -196,6 +200,7 @@
                 </aside>
 
             </div>
+            {% endblock container %}
         </div>
     </section>
 

@@ -1,5 +1,6 @@
 from django.db import models
-from django.contrib.auth.models import User
+# from django.contrib.auth.models import User
+from users.models import User
 
 
 class Topic(models.Model):
@@ -18,7 +19,7 @@ class Topic(models.Model):
 
 #     def __str__(self):
 #         return self.text
-        
+
 
 class Post(models.Model):
     """博客文章"""
@@ -29,11 +30,9 @@ class Post(models.Model):
     text = models.TextField()
     date_added = models.DateTimeField(auto_now_add=True)
     owner = models.ForeignKey(User)
-    #封面图，后面改为上传图片
+    # 封面图，后面改为上传图片
     cover = models.TextField()
     topic = models.ForeignKey(Topic)
 
     def __str__(self):
-    	return self.title
-
-		
+        return self.title

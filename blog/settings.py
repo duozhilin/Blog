@@ -126,6 +126,7 @@ STATIC_URL = '/static/'
 
 #我的设置
 LOGIN_URL = '/users/login'
+AUTH_USER_MODEL = 'users.User'
 
 # STATIC_ROOT = 'staticfiles'
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')

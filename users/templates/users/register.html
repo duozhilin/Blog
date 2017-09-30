@@ -1,0 +1,63 @@
+{% extends "blogs/base.html" %}
+
+{% block menu %}
+    <li class="nav-current" role="presentation"><a href="/">首页</a></li>
+    <li role="presentation"><a href="http://wenda.ghostchina.com">论坛</a></li>
+    <li role="presentation"><a href="/ghost-cheat-sheet/">快捷手册</a></li>
+    <li role="presentation"><a href="http://docs.ghostchina.com/zh/">中文文档</a></li>
+    <li role="presentation"><a href="/download/">下载</a></li>
+    <li role="presentation"><a href="/about/">关于</a></li>
+{% endblock menu %}
+
+
+{% block container %}
+
+<form class="form-horizontal" method="post" action="{% url 'users:register' %}">
+	{% csrf_token %}
+	<div class="form-group">
+		<label for="id_username" class="col-sm-3 control-label">用户名</label>
+		<div class="col-sm-9">
+			<input type="text" name="username" class="form-control" placeholder="用户名" maxlength="20" required id="id_username">
+		</div>
+	</div>
+	<div class="form-group">
+		<label for="id_password" class="col-sm-3 control-label">密码</label>
+		<div class="col-sm-9">
+			<input type="password" name="password" class="form-control" placeholder="密码" maxlength="30" title="" required id="id_password">
+		</div>
+	</div>
+	<div class="form-group">
+		<label for="id_password" class="col-sm-3 control-label">密码</label>
+		<div class="col-sm-9">
+			<input type="password" name="password" class="form-control" placeholder="密码" maxlength="30" title="" required id="id_password">
+		</div>
+	</div>
+	<div class="form-group">
+		<label for="id_password" class="col-sm-3 control-label">密码</label>
+		<div class="col-sm-9">
+			<input type="password" name="password" class="form-control" placeholder="密码" maxlength="30" title="" required id="id_password">
+		</div>
+	</div>
+	<div class="form-group">
+		<label for="id_password" class="col-sm-3 control-label">密码</label>
+		<div class="col-sm-9">
+			<input type="password" name="password" class="form-control" placeholder="密码" maxlength="30" title="" required id="id_password">
+		</div>
+	</div>
+	<div class="form-group">
+		<label for="id_password" class="col-sm-3 control-label">密码</label>
+		<div class="col-sm-9">
+			<input type="password" name="password" class="form-control" placeholder="密码" maxlength="30" title="" required id="id_password">
+		</div>
+	</div>
+	<div class="form-group">
+		<div class="col-sm-offset-3 col-sm-4">
+			<button type="submit" class="btn btn-default">登录</button>
+		</div>
+		<div class="col-sm-5">
+			<a href="{% url 'users:register' %}" class="btn btn-default">注册</a>
+		</div>
+	</div>
+</form>
+
+{% endblock container %}
