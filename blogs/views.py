@@ -16,24 +16,6 @@ def index(request):
     return render(request, 'blogs/index.html', context)
 
 
-def user_index(request, username):
-    """用户主页"""
-    if username:
-        target = User.objects.get(username=username)
-        if not target:
-            raise Http404
-    else:
-        if request.user.is_authenticated():
-            target = request.user
-        else:
-            raise Http404
-
-    topics = Topic.objects.filter(owner=target).order_by('-date_added')
-    posts = Post.objects.filter(owner=target).order_by('-date_added')
-    context = {'topics': topics, 'posts': posts, 'target': target}
-    return render(request, 'blogs/posts.html', context)
-
-
 @login_required
 def topics(request):
     topics = Topic.objects.filter(owner=request.user).order_by('-date_added')
@@ -53,6 +35,7 @@ def new_topic(request):
         return topics(request)
 
     return render(request, 'blogs/new_topic.html')
+
 
 @login_required
 def delete_topic(request, topic_id):
@@ -75,7 +58,7 @@ def post(request, post_id):
         raise Http404
 
 
-def posts(request, topic_id):
+def posts_topic(request, topic_id):
     """文章列表"""
     if topic_id:
         topic = Topic.objects.get(id=topic_id)
@@ -85,6 +68,33 @@ def posts(request, topic_id):
 
     context = {'posts': posts}
     return render(request, 'blogs/posts.html', context)
+
+
+def posts_user(request, username):
+    """用户主页"""
+    if username:
+        target = User.objects.get(username=username)
+        if not target:
+            raise Http404
+    else:
+        if request.user.is_authenticated():
+            target = request.user
+        else:
+            raise Http404
+
+    topics = Topic.objects.filter(owner=target).order_by('-date_added')
+    posts = Post.objects.filter(owner=target).order_by('-date_added')
+    context = {'topics': topics, 'posts': posts, 'target': target}
+    return render(request, 'blogs/posts.html', context)
+
+
+@login_required
+def posts_manger(request):
+    """文章管理"""
+    posts = Post.objects.filter(owner=request.user).order_by('-date_added')
+
+    context = {'posts': posts}
+    return render(request, 'blogs/post_manager.html', context)
 
 
 @login_required
@@ -125,7 +135,7 @@ def delete_post(request, post_id):
     post = Post.objects.filter(owner=request.user).get(id=post_id)
     if post:
         post.delete()
-        return user_index(request)
+        return posts_user(request)
     else:
         raise Http404
 
@@ -158,5 +168,3 @@ def edit_post(request, post_id):
         new_post.save()
 
         return HttpResponseRedirect(reverse('blogs:post', args=[new_post.id]))
-
-

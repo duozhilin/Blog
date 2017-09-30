@@ -11,7 +11,7 @@
             {% for topic in topics %}
                 <tr>
                     <td>{{ topic.id }}</td>
-                    <td><a href="{% url 'blogs:posts' topic.id %}"> {{ topic }}</a></td>
+                    <td><a href="{% url 'blogs:posts_topic' topic.id %}"> {{ topic }}</a></td>
                     <td>{{ topic.date_added|date:'Y年m月d日 H:i' }}</td>
                     <td>{{ topic.owner.nickname }}</td>
                     <td>{{ topic.post_set.all|length }}</td>

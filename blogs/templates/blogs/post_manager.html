@@ -4,7 +4,7 @@
         <div class="post-head">
             <h1 class="post-title"><a href="{% url 'blogs:post' post.id %}">{{ post.title }}</a></h1>
             <div class="post-meta">
-                <span class="author">作者：<a href="{% url 'blogs:user_index' post.owner.username %}">{{ post.owner.nickname }}</a></span> &bull;
+                <span class="author">作者：<a href="{% url 'blogs:posts_user' post.owner.username %}">{{ post.owner.nickname }}</a></span> &bull;
                 <time class="post-date" datetime="{{ post.date_added|date:'Y年m月d日 H:i' }}" title="{{ post.date_added|date:'Y年m月d日 H:i' }}">{{ post.date_added|date:'Y年m月d日 H:i' }}</time>
             </div>
         </div>

@@ -14,9 +14,9 @@ urlpatterns = [
 
     # post
     url(r'^post/(?P<post_id>\d+)/$', views.post, name='post'),
-    url(r'^posts/(?P<username>\w+)/$', views.user_index, name='user_index'),
-    url(r'^posts/(?P<username>\w+)/list$', views.posts_list, name='posts_list'),
-    url(r'^topic/(?P<topic_id>\d+)/posts$', views.posts, name='posts'),
+    url(r'^posts/(?P<username>\w+)/$', views.posts_user, name='posts_user'),
+    url(r'^posts/topic/(?P<topic_id>\d+)/$', views.posts_topic, name='posts_topic'),
+    url(r'^posts/manager$', views.posts_manger, name='posts_manager'),
     url(r'^new_post$', views.new_post, name='new_post'),
     url(r'^edit_post/(?P<post_id>\d+)/$', views.edit_post, name='edit_post'),
     url(r'^delete_post/(?P<post_id>\d+)/$', views.delete_post, name='delete_post'),
