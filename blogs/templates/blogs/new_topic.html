@@ -1,0 +1,23 @@
+{% extends "blogs/base.html" %}
+
+
+{% block container %}
+
+    <div class="col-xs-offset-1 col-sm-offset-2 col-md-offset-3 col-xs-10 col-sm-8 col-md-6">
+        <form class="form-horizontal" method="post" action="{% url 'blogs:new_topic' %}">
+            {% csrf_token %}
+            <div class="form-group">
+                <label for="id_topic" class="col-sm-3 col-sm-3 control-label">主题 <span class="required">*</span></label>
+                <div class="col-sm-9">
+                    <input type="text" name="topic" id="id_topic" class="form-control" placeholder="主题" maxlength="20" required>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-sm-offset-3 col-sm-4">
+                    <button type="submit" class="btn btn-default">保存</button>
+                </div>
+            </div>
+        </form>
+    </div>
+
+{% endblock container %}

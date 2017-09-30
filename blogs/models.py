@@ -5,8 +5,9 @@ from users.models import User
 
 class Topic(models.Model):
     """博客主题"""
-    text = models.CharField(max_length=20)
+    text = models.CharField(max_length=20, unique=True)
     date_added = models.DateTimeField(auto_now_add=True)
+    owner = models.ForeignKey(User)
 
     def __str__(self):
         return self.text

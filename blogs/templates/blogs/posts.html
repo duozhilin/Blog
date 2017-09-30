@@ -1,0 +1,26 @@
+{% extends 'blogs/base.html' %}
+
+
+{% block main %}
+	<main class="col-md-8 main-content">
+        {% if target %}
+            <div class="cover author-cover">
+                <div class="avatar-wrap">
+                    <img src="http://static.ghostchina.com/image/5/ea/da657733ee8c9add9cf3fd70183a6.png" alt="王赛" class="avatar">
+                </div>
+                <h3 class="author-name">
+                    作者：{{target.nickname}}
+                </h3>
+                <div class="meta-info">
+                    <span class="post-count"><i class="fa fa-pencil-square-o"></i>79 篇文章</span>
+                    <span class="loaction"><i class="fa fa-map-marker"></i>北京</span>
+                    <span class="website"><i class="fa fa-globe"></i><a href="http://www.bootcss.com" targer="_BLANK">个人网站/博客</a></span>
+                </div>
+                <div class="bio"></div>
+            </div>
+        {% endif %}
+		
+		{% include "blogs/post_list.html" %}
+	</main>
+
+{% endblock main %}
