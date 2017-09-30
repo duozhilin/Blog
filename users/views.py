@@ -34,7 +34,7 @@ def register(request):
         password_ = data['password']
         nickname_ = data['nickname']
 
-        # new_user = user_manager.create_user(username_, email_, password_, nickname =nickname_)
+        # new_user = user_manager.create_user(username_, email_, password_, nickname=nickname_)
         new_user = User()
         new_user.username = username_
         new_user.nickname = nickname_
@@ -43,7 +43,7 @@ def register(request):
         new_user.save()
 
         print(new_user)
-        authenticated_user = authenticate(username = username_, password = password_)
+        authenticated_user = authenticate(username=username_, password=password_)
         login(request, authenticated_user)
         return HttpResponseRedirect(reverse('blogs:index'))
 
