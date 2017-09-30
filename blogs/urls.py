@@ -7,5 +7,5 @@ from . import views
 urlpatterns = [
     url(r'^$', views.index, name='index'),
     url(r'^post/(?P<post_id>\d+)/$', views.post, name='post'),
-    url(r'^(?P<username>\w+)/$', views.user_index, name='user_index'),
+    url(r'^posts/(?P<username>\w+)/$', views.user_index, name='user_index'),
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

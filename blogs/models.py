@@ -2,7 +2,6 @@ from django.db import models
 from django.contrib.auth.models import User
 
 
-
 class Topic(models.Model):
     """博客主题"""
     text = models.CharField(max_length=20)
