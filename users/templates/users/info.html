@@ -1,0 +1,31 @@
+{% extends 'blogs/base.html' %}
+
+
+{% block container %}
+    <div align="right">
+        <a href="{% url 'users:edit_info' %}" class="btn btn-default" role="button">编辑</a>
+    </div>
+    <div class="col-sm-offset-2 col-md-offset-4 col-xs-12 col-sm-8 col-md-4">
+        <div align="center">
+            <p><img src="{{ user.avatar }}" alt="{{ user.nickname }}" class="avatar" height="80" width="80"></p>
+            <p>{{ user.nickname }}</p>
+        </div>
+        <p><hr></p>
+        <div>
+            <dl class="dl-horizontal">
+                <dt>昵称</dt><dd>{{ user.username }}</dd>
+                <dt>姓名</dt><dd>{{ user.real_name }}</dd>
+                <dt>身份证号</dt><dd>{{ user.id_card }}</dd>
+                <dt>邮箱</dt><dd><a href="mailto://{{ user.email }}">{{ user.email }}</a></dd>
+                <dt>城市</dt><dd>{{ user.city }}</dd>
+                <dt>个人网站、博客</dt><dd><a href="{{ user.site }}">{{ user.site }}</a></dd>
+            </dl>
+            <p><hr></p>
+            <dl class="dl-horizontal">
+                <dt>注册时长</dt><dd>{{ user.date_joined|timesince }}</dd>
+                <dt>最后登录</dt><dd>{{ user.last_login|date:'Y年m月d日 H:i' }}</dd>
+            </dl>
+        </div>
+    </div>
+
+{% endblock container %}

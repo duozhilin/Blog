@@ -41,15 +41,15 @@
 		</article>
 
 		<div class="about-author clearfix">
-		    <a href="/author/wangsai/"><img src="http://static.ghostchina.com/image/5/ea/da657733ee8c9add9cf3fd70183a6.png" alt="王赛" class="avatar pull-left"></a>
+		    <a href="/author/wangsai/"><img src="{{ post.owner.avatar }}" alt="{{ post.owner.nickname }}" class="avatar pull-left"></a>
 		    
 		    <div class="details">
 		        <div class="author">
 		            关于作者 <a href="{% url 'blogs:posts_user' post.owner.username %}">{{ post.owner.nickname }}</a>
 		        </div>
 		        <div class="meta-info">
-		            <span class="loaction"><i class="fa fa-home"></i>北京</span>
-		            <span class="website"><i class="fa fa-globe"></i><a href="http://www.bootcss.com" targer="_blank">个人网站/博客</a></span>
+		            <span class="loaction"><i class="fa fa-home"></i>{{ post.owner.city }}</span>
+		            <span class="website"><i class="fa fa-globe"></i><a href="{{ post.owner.site }}" targer="_blank">个人网站/博客</a></span>
 		        </div>
 		    </div>
 		</div>

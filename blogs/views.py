@@ -53,6 +53,8 @@ def post(request, post_id):
     post = Post.objects.get(id=post_id)
     if post:
         context = {'post': post}
+        post.read_count += 1
+        post.save()
         return render(request, 'blogs/post.html', context)
     else:
         raise Http404
@@ -60,14 +62,13 @@ def post(request, post_id):
 
 def posts_topic(request, topic_id):
     """文章列表"""
+    posts = []
     if topic_id:
         topic = Topic.objects.get(id=topic_id)
         posts = Post.objects.filter(topic=topic).order_by('-date_added')
-    else:
-        posts = []
 
     context = {'posts': posts}
-    return render(request, 'blogs/posts.html', context)
+    return render(request, 'blogs/post_user.html', context)
 
 
 def posts_user(request, username):
@@ -85,7 +86,7 @@ def posts_user(request, username):
     topics = Topic.objects.filter(owner=target).order_by('-date_added')
     posts = Post.objects.filter(owner=target).order_by('-date_added')
     context = {'topics': topics, 'posts': posts, 'target': target}
-    return render(request, 'blogs/posts.html', context)
+    return render(request, 'blogs/post_user.html', context)
 
 
 @login_required
@@ -94,7 +95,7 @@ def posts_manger(request):
     posts = Post.objects.filter(owner=request.user).order_by('-date_added')
 
     context = {'posts': posts}
-    return render(request, 'blogs/post_manager.html', context)
+    return render(request, 'blogs/posts.html', context)
 
 
 @login_required
@@ -135,7 +136,7 @@ def delete_post(request, post_id):
     post = Post.objects.filter(owner=request.user).get(id=post_id)
     if post:
         post.delete()
-        return posts_user(request)
+        return posts_manger(request)
     else:
         raise Http404
 

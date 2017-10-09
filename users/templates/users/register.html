@@ -1,15 +1,5 @@
 {% extends "blogs/base.html" %}
 
-{% block menu %}
-    <li role="presentation"><a href="/">首页</a></li>
-    <li role="presentation"><a href="http://wenda.ghostchina.com">论坛</a></li>
-    <li role="presentation"><a href="/ghost-cheat-sheet/">快捷手册</a></li>
-    <li role="presentation"><a href="http://docs.ghostchina.com/zh/">中文文档</a></li>
-    <li role="presentation"><a href="/download/">下载</a></li>
-    <li role="presentation"><a href="/about/">关于</a></li>
-{% endblock menu %}
-
-
 {% block container %}
 
     <div class="col-xs-offset-1 col-sm-offset-2 col-md-offset-3 col-xs-10 col-sm-8 col-md-6">
@@ -31,6 +21,36 @@
                 <label for="id_email" class="col-sm-3 control-label">邮箱 <span class="required">*</span></label>
                 <div class="col-sm-9">
                     <input type="email" name="email" id="id_email" class="form-control" placeholder="邮箱" maxlength="30" required>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="id_city" class="col-sm-3 control-label">城市 <span class="required">*</span></label>
+                <div class="col-sm-9">
+                    <input type="city" name="city" id="id_city" class="form-control" placeholder="城市" maxlength="30" required>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="id_site" class="col-sm-3 control-label">个人网站、博客</label>
+                <div class="col-sm-9">
+                    <input type="site" name="site" id="id_site" class="form-control" placeholder="个人网站、博客" maxlength="30">
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="id_avatar" class="col-sm-3 control-label">头像 <span class="required">*</span></label>
+                <div class="col-sm-9">
+                    <input type="avatar" name="avatar" id="id_avatar" class="form-control" placeholder="头像" maxlength="30" required>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="id_real_name" class="col-sm-3 control-label">姓名</label>
+                <div class="col-sm-9">
+                    <input type="real_name" name="real_name" id="id_real_name" class="form-control" placeholder="姓名" maxlength="30">
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="id_id_card" class="col-sm-3 control-label">身份证号</label>
+                <div class="col-sm-9">
+                    <input type="id_card" name="id_card" id="id_id_card" class="form-control" placeholder="身份证号" maxlength="18">
                 </div>
             </div>
             <div class="form-group">

@@ -88,11 +88,10 @@
                             <div class="content community">
                                 <p><i class="fa fa-fw fa-user"></i> {{ user.get_full_name }} 
                                     <a href="{% url 'users:logout_view' %}"><i class="fa fa-fw fa-sign-out"></i> 注销</a></p>
-                                <p><i class="fa fa-fw fa-envelope"></i> {{ user.email }}</p>
+                                <p><i class="fa fa-fw fa-envelope"></i><a href="mailto://{{ user.email }}"> {{ user.email }}</a></p>
                                 <p><i class="fa fa-fw fa-clock-o"></i> {{ user.last_login|date:'Y年m月d日 H:i' }}</p>
                                 <p><i class="fa fa-fw fa-calendar"></i> {{ user.date_joined|timesince }}</p>
-                                <p><a href="{% url 'blogs:topics' %}">管理主题</a></p>
-                                <p><a href="{% url 'blogs:posts_manager' %}">文章管理</a></p>
+                                <p><a href="{% url 'blogs:topics' %}">管理主题</a>&nbsp;&nbsp;<a href="{% url 'blogs:posts_manager' %}">文章管理</a>&nbsp;&nbsp;<a href="{% url 'users:info' %}">个人中心</a></p>
                             </div>
                         </div>
                     {% else %}
@@ -132,18 +131,12 @@
                     <div class="widget">
                         <h4 class="title">最新文章</h4>
                         <div class="content recent-post">
-                            <div class="recent-single-post">
-                                <a href="/custom-excerpts/" class="post-title">自定义文章摘要（Excerpt）</a>
-                                <div class="date">2017年8月9日</div>
-                            </div>
-                            <div class="recent-single-post">
-                                <a href="/primary-tags/" class="post-title">首要“标签”</a>
-                                <div class="date">2017年8月3日</div>
-                            </div>
-                            <div class="recent-single-post">
-                                <a href="/ghost-1-0-released/" class="post-title">Ghost 1.0 版本正式发布</a>
-                                <div class="date">2017年7月29日</div>
-                            </div>
+                            {% for post in posts %}
+                                <div class="recent-single-post">
+                                    <a href="{% url 'blogs:post' post.id %}" class="post-title">{{ post.title }}</a>
+                                    <div class="date">{{ post.date_added|date:'Y年m月d日' }}</div>
+                                </div>
+                            {% endfor %}
                         </div>
                     </div>
                     <!-- end widget --> 
