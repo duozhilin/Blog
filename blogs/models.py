@@ -17,6 +17,7 @@ class Tag(models.Model):
     """文章标签"""
     text = models.CharField(max_length=20)
     date_added = models.DateTimeField(auto_now_add=True)
+    owner = models.ForeignKey(User)
 
     def __str__(self):
         return self.text

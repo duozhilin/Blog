@@ -4,7 +4,7 @@ from django.http import HttpResponseRedirect, Http404
 from django.core.urlresolvers import reverse
 from django.contrib.auth.decorators import login_required
 
-from .models import Post, Topic
+from .models import Post, Topic, Tag
 from .forms import PostForm
 
 
@@ -32,7 +32,7 @@ def new_topic(request):
         topic.owner = request.user
         topic.save()
 
-        return topics(request)
+        return HttpResponseRedirect(reverse('blogs:topics'))
 
     return render(request, 'blogs/new_topic.html')
 
@@ -44,6 +44,39 @@ def delete_topic(request, topic_id):
     if topic:
         topic.delete()
         return topics(request)
+    else:
+        raise Http404
+
+
+@login_required
+def tags(request):
+    """标签列表"""
+    tags = Tag.objects.filter(owner=request.user).order_by('-date_added')
+    context = {'tags': tags}
+    return render(request, 'blogs/tags.html', context)
+
+
+@login_required
+def new_tag(request):
+    """新增标签"""
+    if request.method == 'POST':
+        tag = Tag()
+        tag.text = request.POST['tag']
+        tag.owner = request.user
+        tag.save()
+
+        return HttpResponseRedirect(reverse('blogs:tags'))
+
+    return render(request, 'blogs/new_tag.html')
+
+
+@login_required
+def delete_tag(request, tag_id):
+    """删除标签"""
+    tag = Tag.objects.filter(owner=request.user).get(id=tag_id)
+    if tag:
+        tag.delete()
+        return HttpResponseRedirect(reverse('blogs:tags'))
     else:
         raise Http404
 

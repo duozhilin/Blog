@@ -1,0 +1,24 @@
+{% extends 'blogs/base.html' %}
+
+
+{% block container %}
+    <div>
+        <a href="{% url 'blogs:new_tag' %}" class="btn btn-default" role="button">新增</a>
+    </div>
+    <div class="table-responsive">
+        <table class="table table-striped table-hover">
+            <tr><th>id</th><th>标签</th><th>添加时间</th><th>添加人</th><th>文章数量</th><th>操作</th></tr>
+            {% for tag in tags %}
+                <tr>
+                    <td>{{ tag.id }}</td>
+                    <td><a href="{% url 'blogs:posts_tag' tag.id %}"> {{ tag }}</a></td>
+                    <td>{{ tag.date_added|date:'Y年m月d日 H:i' }}</td>
+                    <td>{{ tag.owner.nickname }}</td>
+                    <td>{{ tag.post_set.all|length }}</td>
+                    <td><a href="{% url 'blogs:delete_tag' tag.id %}"><i class="fa fa-remove"></i></a></td>
+                </tr>
+            {% endfor %}
+        </table>
+    </div>
+
+{% endblock container %}

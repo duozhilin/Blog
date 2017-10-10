@@ -12,6 +12,11 @@ urlpatterns = [
     url(r'^new_topic$', views.new_topic, name='new_topic'),
     url(r'^delete_topic/(?P<topic_id>\d+)/$', views.delete_topic, name='delete_topic'),
 
+    # tag
+    url(r'^tags$', views.tags, name='tags'),
+    url(r'^new_tag$', views.new_tag, name='new_tag'),
+    url(r'^delete_tag/(?P<tag_id>\d+)/$', views.delete_tag, name='delete_tag'),
+
     # post
     url(r'^post/(?P<post_id>\d+)/$', views.post, name='post'),
     url(r'^posts/(?P<username>\w+)/$', views.posts_user, name='posts_user'),
