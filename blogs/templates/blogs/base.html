@@ -91,7 +91,7 @@
                                 <p><i class="fa fa-fw fa-envelope"></i><a href="mailto://{{ user.email }}"> {{ user.email }}</a></p>
                                 <p><i class="fa fa-fw fa-clock-o"></i> {{ user.last_login|date:'Y年m月d日 H:i' }}</p>
                                 <p><i class="fa fa-fw fa-calendar"></i> {{ user.date_joined|timesince }}</p>
-                                <p><a href="{% url 'blogs:topics' %}">管理主题</a>&nbsp;&nbsp;<a href="{% url 'blogs:posts_manager' %}">文章管理</a>&nbsp;&nbsp;<a href="{% url 'users:info' %}">个人中心</a></p>
+                                <p><a href="{% url 'blogs:topics' %}">主题</a>&nbsp;&nbsp;<a href="{% url 'blogs:tags' %}">标签</a>&nbsp;&nbsp;<a href="{% url 'blogs:posts_manager' %}">文章</a>&nbsp;&nbsp;<a href="{% url 'users:info' %}">个人中心</a></p>
                             </div>
                         </div>
                     {% else %}

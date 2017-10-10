@@ -104,6 +104,17 @@ def posts_topic(request, topic_id):
     return render(request, 'blogs/post_user.html', context)
 
 
+def posts_tag(request, tag_id):
+    """文章列表"""
+    posts = []
+    if tag_id:
+        tag = Tag.objects.get(id=tag_id)
+        posts = Post.objects.filter(tags=tag).order_by('-date_added')
+
+    context = {'posts': posts}
+    return render(request, 'blogs/post_user.html', context)
+
+
 def posts_user(request, username):
     """用户主页"""
     if username:

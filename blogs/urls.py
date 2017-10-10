@@ -21,6 +21,7 @@ urlpatterns = [
     url(r'^post/(?P<post_id>\d+)/$', views.post, name='post'),
     url(r'^posts/(?P<username>\w+)/$', views.posts_user, name='posts_user'),
     url(r'^posts/topic/(?P<topic_id>\d+)/$', views.posts_topic, name='posts_topic'),
+    url(r'^posts/tag/(?P<tag_id>\d+)/$', views.posts_tag, name='posts_tag'),
     url(r'^posts/manager$', views.posts_manger, name='posts_manager'),
     url(r'^new_post$', views.new_post, name='new_post'),
     url(r'^edit_post/(?P<post_id>\d+)/$', views.edit_post, name='edit_post'),
